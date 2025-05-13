@@ -4,15 +4,7 @@
 	// Configures and integrates scrollyteller with visualizations
 	// ===================================================================
 	import Scrollyteller, { loadScrollyteller } from '$lib/index.js';
-	import VegaChart from './VegaChart.svelte';
 	import { onMount } from 'svelte';
-
-	// Import chart specifications from JSON files
-	import chart01 from './Charts/chart_01.json';
-	import chart03 from './Charts/chart_03.json';
-	import chart04 from './Charts/chart_04.json';
-	import chart06 from './Charts/chart_06.json';
-	import chart07 from './Charts/chart_07.json';
 	
 	// ===================================================================
 	// SCROLLYTELLER CONFIGURATION
@@ -27,7 +19,6 @@
 	// App state
 	let number = 0; // Current section number
 	let stProgress; // Scrollyteller progress data
-	let currentSpec = null; // Current chart specification
 
 	// ===================================================================
 	// CHART METADATA
@@ -35,38 +26,18 @@
 	// ===================================================================
 	const chartInfo = [
 		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.",
+			title: "Years Lost to Wrongful Conviction",
+			description: "Exonerees spent an average of 15 years of their lives behind bars prior to their release, with a maximum of 48 years taken from Glynn Simmons who was falsely convicted of a 1975 murder.",
 			alignment: "left"
 		},
 		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
-			alignment: "center"
-		},
-		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
-			alignment: "right"
-		},
-		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.",
+			title: "Racial Disparities",
+			description: "Most exonerees (55%) are Black.",
 			alignment: "left"
 		},
 		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.",
-			alignment: "center"
-		},
-		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.",
-			alignment: "right"
-		},
-		{
-			title: "Lorem Ipsum",
-			description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.",
+			title: "Gender Distribution",
+			description: "Exonerees are overwhelmingly (94%) male.",
 			alignment: "center"
 		}
 	];
@@ -79,54 +50,12 @@
 	// Handle marker changes (when user scrolls to a new section)
 	const onMarker = (marker) => {
 		number = marker.number;
-		updateVisualization(number);
 	};
 
 	// Track scrolling progress for animations
 	const onProgress = (progress) => {
 		stProgress = progress;
 	};
-
-	// ===================================================================
-	// VISUALIZATION MANAGEMENT
-	// Update displayed content based on current section
-	// ===================================================================
-	
-	// Update the visualization based on the current marker number
-	function updateVisualization(markerNumber) {
-		// Select the appropriate chart specification for each section
-		switch (markerNumber) {
-			case 1:
-				currentSpec = chart01; // Chart visualization
-				break;
-			case 2:
-				currentSpec = null; // Full-screen image instead of chart
-				break;
-			case 3:
-				currentSpec = chart03; // Chart visualization
-				break;
-			case 4:
-				currentSpec = chart04; // Chart visualization
-				break;
-			case 5:
-				currentSpec = null; // Full-screen image instead of chart
-				break;
-			case 6:
-				currentSpec = chart06; // Chart visualization
-				break;
-			case 7:
-				currentSpec = chart07; // Chart visualization
-				break;
-			default:
-				currentSpec = null;
-				break;
-		}
-	}
-
-	// Initialize with first visualization on component mount
-	onMount(() => {
-		updateVisualization(1);
-	});
 </script>
 
 <svelte:head>
@@ -137,7 +66,7 @@
 	// ===================================================================
 	-->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fleur+De+Leah&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fleur+De+Leah&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </svelte:head>
@@ -151,8 +80,8 @@
 <div class="fullscreen-chapter header-image">
 	<div class="header-overlay"></div>
 	<div class="header-content">
-		<h1 class="main-title">Article Title Goes Here</h1>
-		<h2 class="sub-title">Authors // Date</h2>
+		<h1 class="main-title">U.S. Exonerations: Lifetimes lost among those wrongfully convicted of murder</h1>
+		<h2 class="sub-title"> Maeve Brin // May 15, 2025</h2>
 	</div>
 </div>
 
@@ -163,13 +92,13 @@
 // ===================================================================
 -->
 <div class="content-container">
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+	<p class="content-paragraph">Leon Benson slept with his shoes on for the first eight months of his 60-year sentence for the 1998 murder of Kasey Schoen in Indianapolis, Indiana. Benson, 49, spent 24 years of his life in prison for a crime that he did not commit.</p>
+	<p class="content-paragraph">"I had the delusion of reprieve and the delusion of reprieve is typically with someone who's getting executed, they believe that at any time, somebody is going to come and just stop this," he said. "And part of my delusion of reprieve was that the system knew it made a mistake and that it was gonna come and get me."</p>
 	<div class="image-left">
-		<img src="../../src/TestExample/Images/placeholder.png" alt="Square placeholder" />
+		<img src="../../src/TestExample/Images/bars.png" alt="Leon Benson" />
 	</div>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+	<p class="content-paragraph">Benson, a Black man, is the victim of a false witness identification by a White woman who told the police she saw him at the scene of the crime. He sat through two trials, the first resulting in a hung jury, and went to prison for murder in 1999. When he got to the courtroom, he said he quickly realized it was "us versus them."</p>
+	<p class="content-paragraph">It was "White people against Black people, the system against the has-nots, the establishment against urban communities, hip hop," he paused, "because everyone that was on my case had a record except for the witness."</p>
 </div>
 
 <!-- 
@@ -180,28 +109,27 @@
 -->
 <div class="fullscreen-chapter black-bg">
 	<div class="content-container">
-		<h2>section header</h2>
-		<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-		<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-		<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+		<p class="content-paragraph">Benson spent years advocating for his freedom. He said he continuously tried to keep himself relevant, by appearing on MSNBC Lockup, maintaining a presence on MySpace and Facebook with the help of one of his prison pen pals, teaching mass incarceration classes alongside college kids, becoming President of Toastmasters club, and helping create a program called "True Self" to change life through literature. He wrote petitions, tried to get a sentence modification, and filed a Habeas Corpus. By 2018, he felt he had exhausted all legal remedies.</p>
+		<p class="content-paragraph">He said, however, there was a "paradigm shift" during the pandemic, and following the murder of George Floyd, his case started to gain traction. It was during this time that he connected with Lara Bazelon, a Professor at the University of San Francisco School of Law and the Director of a racial justice clinic in San Francisco, who fought for his eventual release in March of 2023.</p>
+		<p class="content-paragraph">Benson's case is one of 1,415 exonerations in the United States since 1989 for a wrongful murder conviction, according to the National Registry of Exonerations. Exonerees like Benson have lost decades of their lives due to flaws in the criminal justice system.</p>
 	</div>
 </div>
 
 <!-- 
 // ===================================================================
-// MAP VISUALIZATION
-// Embedded Datawrapper map visualization
+// YEARS LOST CHART
+// Visualization of years lost to wrongful conviction
 // ===================================================================
 -->
-<div style="min-height:730px" id="datawrapper-vis-V8sUH"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/V8sUH/embed.js" charset="utf-8" data-target="#datawrapper-vis-V8sUH"></script><noscript><img src="https://datawrapper.dwcdn.net/V8sUH/full.png" alt="" /></noscript></div>
+<div style="min-height:730px; margin: 50px 0"><iframe title="Years free v. years lost among people wrongfully convicted of murder" aria-label="Stacked Bars" id="datawrapper-chart-PvGQT" src="https://datawrapper.dwcdn.net/PvGQT/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="33910" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+</script></div>
 
 <div class="content-container">
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	<div style="min-height:430px" id="datawrapper-vis-FkN5a"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/FkN5a/embed.js" charset="utf-8" data-target="#datawrapper-vis-FkN5a"></script><noscript><img src="https://datawrapper.dwcdn.net/FkN5a/full.png" alt="" /></noscript></div>
-	<p></p>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+	<p class="content-paragraph">The chart above represents the years lost among those wrongfully convicted of murder. Age of the exoneree when they were released is the number on the far right side of each bar.</p>
+	<p class="content-paragraph">Prisoners from 46 U.S. states, the District of Columbia, and Puerto Rico have been exonerated since 1989.</p>
+	<div style="min-height:510px; margin: 30px 0"><iframe title="Number of Exonerations per State" aria-label="Map" id="datawrapper-chart-BFkx7" src="https://datawrapper.dwcdn.net/BFkx7/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="510" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+</script></div>
+	<p class="content-paragraph">Wrongful convictions occur across the country, but the highest numbers are found in states with larger populations and more extensive criminal justice systems. These cases reveal systemic issues that transcend regional boundaries.</p>
 </div>
 
 <!-- 
@@ -219,81 +147,42 @@
 		<div class="chart-container">
 			<!-- Render different content based on current section -->
 			{#if number === 1}
-				<!-- Section 1: Chart with left alignment -->
-				<VegaChart 
-					spec={chart01}
-					alignment={chartInfo[0].alignment} 
-				/>
-				
-				<div class="chart-info align-left">
-					<h3 class="chart-title">{chartInfo[0].title}</h3>
-					<p class="chart-description">{chartInfo[0].description}</p>
-				</div>
-			
-			{:else if number === 2}
-				<!-- Section 2: Full-screen image -->
-				<div class="fullscreen-image-container">
-					<img src="../src/TestExample/Images/placehold-19201080-orange.png" alt="Full screen placeholder" class="fullscreen-image" />
-				</div>
-			
-			{:else if number === 3}
-				<!-- Section 3: Chart with right alignment -->
-				<VegaChart 
-					spec={chart03}
-					alignment={chartInfo[2].alignment} 
-				/>
-				
-				<div class="chart-info align-right">
-					<h3 class="chart-title">{chartInfo[2].title}</h3>
-					<p class="chart-description">{chartInfo[2].description}</p>
+				<!-- Section 1: Visualization explanation -->
+				<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background-color: #f8f8f8;">
+					<div class="chart-annotation-container">
+						<div class="chart-annotation">
+							<h3>Years Lost to Wrongful Conviction</h3>
+							<p>Exonerees spent an average of 15 years of their lives behind bars prior to their release, with a maximum of 48 years taken from Glynn Simmons who was falsely convicted of a 1975 murder.</p>
+						</div>
+					</div>
 				</div>
 			
 			{:else if number === 4}
-				<!-- Section 4: Chart with left alignment -->
-				<VegaChart 
-					spec={chart04}
-					alignment={chartInfo[3].alignment} 
-				/>
+				<!-- Section 4: Race distribution -->
+				<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+					<iframe title="Breakdown of races " aria-label="Donut Chart" id="datawrapper-chart-40U0g" src="https://datawrapper.dwcdn.net/40U0g/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 90% !important; border: none;" height="567" data-external="1"></iframe>
+				</div>
 				
 				<div class="chart-info align-left">
-					<h3 class="chart-title">{chartInfo[3].title}</h3>
-					<p class="chart-description">{chartInfo[3].description}</p>
+					<h3 class="chart-title">Racial Disparities</h3>
+					<p class="chart-description">This chart represents the distribution of races of exonerees.</p>
 				</div>
 			
 			{:else if number === 5}
-				<!-- Section 5: Full-screen image -->
-				<div class="fullscreen-image-container">
-					<img src="../src/TestExample/Images/placehold-19201080-blue.png" alt="Full screen placeholder" class="fullscreen-image" />
+				<!-- Section 5: Gender distribution -->
+				<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+					<iframe title="Breakdown of Sex" aria-label="Donut Chart" id="datawrapper-chart-lTcTg" src="https://datawrapper.dwcdn.net/lTcTg/3/" scrolling="no" frameborder="0" style="width: 0; min-width: 90% !important; border: none;" height="567" data-external="1"></iframe>
 				</div>
-			
-			{:else if number === 6}
-				<!-- Section 6: Chart with right alignment -->
-				<VegaChart 
-					spec={chart06}
-					alignment={chartInfo[5].alignment} 
-				/>
-				
-				<div class="chart-info align-right">
-					<h3 class="chart-title">{chartInfo[5].title}</h3>
-					<p class="chart-description">{chartInfo[5].description}</p>
-				</div>
-			
-			{:else if number === 7}
-				<!-- Section 7: Chart with center alignment -->
-				<VegaChart 
-					spec={chart07}
-					alignment={chartInfo[6].alignment} 
-				/>
 				
 				<div class="chart-info align-center">
-					<h3 class="chart-title">{chartInfo[6].title}</h3>
-					<p class="chart-description">{chartInfo[6].description}</p>
+					<h3 class="chart-title">Gender Distribution</h3>
+					<p class="chart-description">Exonerees are overwhelmingly (94%) male.</p>
 				</div>
 			
 			{:else}
 				<!-- Default/Initial state before scrolling begins -->
 				<div class="initial-state">
-					<p>Scroll to begin the journey</p>
+					<p>Scroll to explore the impact of wrongful convictions</p>
 				</div>
 			{/if}
 		</div>
@@ -302,37 +191,14 @@
 
 <!-- 
 // ===================================================================
-// CONTENT SECTION
-// Additional content after scrollytelling experience
+// CONCLUSION SECTION
+// Final thoughts and reflections on Leon Benson's story
 // ===================================================================
 -->
-<div class="content-container">
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-</div>
-
-<!-- 
-// ===================================================================
-// BEIGE CHAPTER SECTION
-// Full-screen beige background section with contrast text
-// ===================================================================
--->
-<div class="fullscreen-chapter beige-bg">
-	<div class="content-container">
-		<h2>new section header</h2>
-		<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-		<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	</div>
-</div>
-
-<div class="content-container">
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	<div style="min-height:591px" id="datawrapper-vis-bbmLi"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/bbmLi/embed.js" charset="utf-8" data-target="#datawrapper-vis-bbmLi"></script><noscript><img src="https://datawrapper.dwcdn.net/bbmLi/full.png" alt="" /></noscript></div>	<p></p>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
-	<p class="content-paragraph">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+<div class="spacer"></div>
+<div class="content-container conclusion-section">
+	<p class="content-paragraph">On March 9, 2023, Benson was reading the Art of Respect by James Prince when he heard, "Leon, you're being released effective immediately." He refers to March 9 as his re-birth.</p>
+	<p class="content-paragraph">"Hope is in action, as long as you breathe, you can breathe, you can do things, there's hope," the 49 year-old exoneree said. "My selfhood is bigger than my exoneration."</p>
 </div>
 
 <!-- 
@@ -344,13 +210,13 @@
 <footer class="site-footer">
 	<div class="footer-container">
 		<div class="footer-content">
-			<h3 class="footer-heading">Lorem Ipsum</h3>
-			<p class="footer-text">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-			<p class="footer-text">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
-			<p class="footer-text">Lorem ipsum dolor sit amet consectetur adipiscing elit.</p>
+			<h3 class="footer-heading">U.S. Exonerations Project</h3>
+			<p class="footer-text">A data visualization on wrongful convictions and the human cost of judicial errors.</p>
+			<p class="footer-text">Based on data from the National Registry of Exonerations.</p>
+			<p class="footer-text"> Maeve Brin</p>
 		</div>
 		<div class="footer-links">
-			<p class="footer-text">This project is an adaptation of the of <a href="https://github.com/abcnews/scrollyteller)">Scrollyteller</a> by ABC News.</p>
+			<p class="footer-text">This project is an adaptation of the <a href="https://github.com/abcnews/scrollyteller">Scrollyteller</a> by ABC News.</p>
 		</div>
 	</div>
 </footer>

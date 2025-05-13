@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="description" content="Scrollytelling Template" />
+		<meta name="description" content="U.S. Exonerations: Lifetimes lost among those wrongfully convicted of murder" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		
 		<!-- 
@@ -13,7 +13,7 @@
 		-->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fleur+De+Leah&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fleur+De+Leah&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		%sveltekit.head%
 		
 		<!-- 
@@ -52,7 +52,7 @@
 				width: 50px;
 				height: 50px;
 				border: 5px solid #f3f3f3;
-				border-top: 5px solid #333;
+				border-top: 5px solid #3498db;
 				border-radius: 50%;
 				animation: spin 1s linear infinite;
 			}
@@ -62,11 +62,34 @@
 				100% { transform: rotate(360deg); }
 			}
 			
-			/* Hide all lorem ipsum paragraphs until app is ready */
+			/* Hide all paragraphs until app is ready */
 			body > p {
 				display: none;
 			}
+            
+            /* Smooth scrolling for the entire page */
+            html {
+                scroll-behavior: smooth;
+            }
+            
+            /* Improved scrolling performance */
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                overflow-y: scroll;
+                scroll-behavior: smooth;
+            }
 		</style>
+		
+		<!-- Open Graph and Twitter Card metadata for social sharing -->
+		<meta property="og:title" content="U.S. Exonerations: Lifetimes lost among those wrongfully convicted of murder">
+		<meta property="og:description" content="An interactive data visualization on wrongful convictions and their impact">
+		<meta property="og:type" content="website">
+		<meta property="og:image" content="/images/og-preview.jpg">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="U.S. Exonerations: Lifetimes lost among those wrongfully convicted of murder">
+		<meta name="twitter:description" content="An interactive data visualization on wrongful convictions and their impact">
+		<meta name="twitter:image" content="/images/twitter-preview.jpg">
 	</head>
 	<body>
 		<!-- 
@@ -97,78 +120,29 @@
 
 		<div data-mount="true" id="markNUMBER1ALIGNright"></div>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum diam a erat
-			bibendum sagittis. Mauris vitae vestibulum nisi. Duis tincidunt enim mi, nec consequat enim
-			consectetur non. Curabitur elit sapien, rhoncus eu erat id, convallis auctor neque. Curabitur
-			in luctus erat.
-		</p>
-
-		<div data-mount="true" id="markNUMBER2ALIGN"></div>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum diam a erat
-			bibendum sagittis. Mauris vitae vestibulum nisi. Duis tincidunt enim mi, nec consequat enim
-			consectetur non. Curabitur elit sapien, rhoncus eu erat id, convallis auctor neque. Curabitur
-			in luctus erat.
-		</p>
-
-		<div data-mount="true" id="markNUMBER3ALIGNleft"></div>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum diam a erat
-			bibendum sagittis. Mauris vitae vestibulum nisi. Duis tincidunt enim mi, nec consequat enim
-			consectetur non. Curabitur elit sapien, rhoncus eu erat id, convallis auctor neque. Curabitur
-			in luctus erat.
+			"Hey if you're right, you're right, if you're wrong, you're wrong," 
+			Benson said. "But it doesn't work out like that sometimes," 
 		</p>
 
 		<div data-mount="true" id="markNUMBER4ALIGNright"></div>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum diam a erat
-			bibendum sagittis. Mauris vitae vestibulum nisi. Duis tincidunt enim mi, nec consequat enim
-			consectetur non. Curabitur elit sapien, rhoncus eu erat id, convallis auctor neque. Curabitur
-			in luctus erat.
+			Most exonerees (55%) are Black. Black Americans 
 		</p>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum diam a erat
-			bibendum sagittis. Mauris vitae vestibulum nisi. Duis tincidunt enim mi, nec consequat enim
-			consectetur non. Curabitur elit sapien, rhoncus eu erat id, convallis auctor neque. Curabitur
-			in luctus erat.
+			are incarcerated at a disproportionate rate as approximately 48% of the people serving 
 		</p>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum diam a erat
-			bibendum sagittis. Mauris vitae vestibulum nisi. Duis tincidunt enim mi, nec consequat enim
-			consectetur non. Curabitur elit sapien, rhoncus eu erat id, convallis auctor neque. Curabitur
-			in luctus erat.
+			life sentences, and 37% of people in jails and prison are Black despite accounting for 
+			 only 13% of the total U.S. population.
 		</p>
 
 		<div data-mount="true" id="markNUMBER5ALIGN"></div>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum diam a erat
-			bibendum sagittis. Mauris vitae vestibulum nisi. Duis tincidunt enim mi, nec consequat enim
-			consectetur non. Curabitur elit sapien, rhoncus eu erat id, convallis auctor neque. Curabitur
-			in luctus erat.
+			The overwhelming majority of exonerees are male, reflecting both the demographics of the prison 
+			population as a whole and potentially different approaches to investigating and prosecuting cases 
+			based on gender.
 		</p>
 
-		<div data-mount="true" id="markNUMBER6ALIGNleft"></div>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum diam a erat
-			bibendum sagittis. Mauris vitae vestibulum nisi. Duis tincidunt enim mi, nec consequat enim
-			consectetur non. Curabitur elit sapien, rhoncus eu erat id, convallis auctor neque. Curabitur
-			in luctus erat.
-		</p>
-		
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum diam a erat
-			bibendum sagittis. Mauris vitae vestibulum nisi. Duis tincidunt enim mi, nec consequat enim
-			consectetur non. Curabitur elit sapien, rhoncus eu erat id, convallis auctor neque. Curabitur
-			in luctus erat.
-		</p>
-
-		<div data-mount="true" id="markNUMBER7ALIGN"></div>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fermentum diam a erat
-			bibendum sagittis. Mauris vitae vestibulum nisi. Duis tincidunt enim mi, nec consequat enim
-			consectetur non. Curabitur elit sapien, rhoncus eu erat id, convallis auctor neque. Curabitur
-			in luctus erat.
-		</p>
 		<div data-mount="true" id="endscrollyteller"></div>
 		
 		<!-- 
@@ -191,6 +165,80 @@
 						}, 500);
 					}
 				}, 200);
+			});
+			
+			// Add smooth scrolling for anchor links
+			document.addEventListener('click', function(e) {
+				if (e.target.tagName === 'A' && e.target.getAttribute('href') && e.target.getAttribute('href').startsWith('#')) {
+					e.preventDefault();
+					const targetId = e.target.getAttribute('href').substring(1);
+					const targetElement = document.getElementById(targetId);
+					
+					if (targetElement) {
+						window.scrollTo({
+							top: targetElement.offsetTop,
+							behavior: 'smooth'
+						});
+					}
+				}
+			});
+			
+			// Add intersection observer for animation triggers
+			document.addEventListener('DOMContentLoaded', function() {
+				const animateElements = document.querySelectorAll('.animate-on-scroll');
+				
+				if (animateElements.length > 0 && 'IntersectionObserver' in window) {
+					const observer = new IntersectionObserver((entries) => {
+						entries.forEach(entry => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add('animate-visible');
+								observer.unobserve(entry.target);
+							}
+						});
+					}, { threshold: 0.2 });
+					
+					animateElements.forEach(element => {
+						observer.observe(element);
+					});
+				}
+                
+                // Make scrolling smoother
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+                
+                // Improve scroll performance
+                let lastKnownScrollPosition = 0;
+                let ticking = false;
+                
+                function doSomethingOnScroll(scrollPos) {
+                    // Throttled scroll handling
+                    // This empty function helps improve scroll performance
+                }
+                
+                window.addEventListener('scroll', function(e) {
+                    lastKnownScrollPosition = window.scrollY;
+                    
+                    if (!ticking) {
+                        window.requestAnimationFrame(function() {
+                            doSomethingOnScroll(lastKnownScrollPosition);
+                            ticking = false;
+                        });
+                        
+                        ticking = true;
+                    }
+                });
 			});
 		</script>
 	</body>
