@@ -1,16 +1,4 @@
-@media (max-width: 30rem) { // 480px
-  .main-title {
-    font-size: 1.8rem;
-  }
-  
-  .sub-title {
-    font-size: 1rem;
-  }
-  
-  .content-paragraph {
-    font-size: 1rem;
-  }
-}// ===================================================================
+// ===================================================================
 // GLOBAL RESET & BOX MODEL
 // Set standard box-sizing and global resets for consistent styling
 // ===================================================================
@@ -66,8 +54,14 @@
 // Reusable animation keyframes and classes
 // ===================================================================
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { 
+    opacity: 0; 
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideInUp {
@@ -89,6 +83,27 @@
 .animate-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+// ===================================================================
+// TRANSITIONS AND ANIMATIONS
+// Enhanced transitions for smoother scrollytelling experience
+// ===================================================================
+.chart-container iframe {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+  transition: opacity 0.5s ease-in-out;
+}
+
+// Transition between chart sections
+.chart-section {
+  transition: opacity 0.8s ease-in-out;
+}
+
+// Special transitions for the race and gender charts
+.race-chart, .gender-chart {
+  opacity: 1;
+  transition: all 0.8s ease-in-out;
 }
 
 // ===================================================================
@@ -122,48 +137,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-}
-
-.chart-title {
-  margin: 0 0 0.625rem 0;
-  font-size: 1.4rem;
-  color: #333;
-}
-
-.chart-description {
-  margin: 0;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  color: #555;
-}
-
-.chart-info {
-  position: absolute;
-  top: 3.125rem;
-  max-width: 21.875rem;
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 0.9375rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  transition: all 0.3s ease;
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-// Alignment variations for chart info cards
-.chart-info.align-left {
-  left: 5%;
-  right: auto;
-}
-
-.chart-info.align-right {
-  right: 5%;
-  left: auto;
-}
-
-.chart-info.align-center {
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 // ===================================================================
@@ -364,6 +337,7 @@
 // ===================================================================
 .scrollyteller {
   position: relative;
+  scroll-behavior: smooth;
 }
 
 // Fixed graphic container
@@ -423,6 +397,20 @@
   color: #555;
 }
 
+.spacer {
+  height: 100px;
+  width: 100%;
+  clear: both;
+}
+
+.conclusion-section {
+  margin-top: 150px;
+  padding-top: 50px;
+  position: relative;
+  z-index: 5;
+  background-color: #fff;
+}
+
 // ===================================================================
 // RESPONSIVE BREAKPOINTS
 // Media queries for responsive design at different screen sizes
@@ -450,10 +438,6 @@
   
   .main-title {
     font-size: 2.5rem;
-  }
-  
-  .chart-info {
-    max-width: 18rem;
   }
 }
 
@@ -490,36 +474,18 @@
     float: none;
     margin: 0 0 1.25rem 0;
   }
-  
-  .chart-info {
-    position: relative;
-    top: auto;
-    left: auto;
-    right: auto;
-    transform: none;
-    margin: 0 auto 1.25rem auto;
-    max-width: 90%;
-  }
-  
-  .chart-info.align-left,
-  .chart-info.align-right,
-  .chart-info.align-center {
-    left: auto;
-    right: auto;
-    transform: none;
-  }
 }
 
-.spacer {
-  height: 100px;
-  width: 100%;
-  clear: both;
-}
-
-.conclusion-section {
-  margin-top: 150px;
-  padding-top: 50px;
-  position: relative;
-  z-index: 5;
-  background-color: #fff;
+@media (max-width: 30rem) { // 480px
+  .main-title {
+    font-size: 1.8rem;
+  }
+  
+  .sub-title {
+    font-size: 1rem;
+  }
+  
+  .content-paragraph {
+    font-size: 1rem;
+  }
 }

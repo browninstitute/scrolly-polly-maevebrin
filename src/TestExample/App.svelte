@@ -19,28 +19,7 @@
 	// App state
 	let number = 0; // Current section number
 	let stProgress; // Scrollyteller progress data
-
-	// ===================================================================
-	// CHART METADATA
-	// Content information for each visualization section
-	// ===================================================================
-	const chartInfo = [
-		{
-			title: "Years Lost to Wrongful Conviction",
-			description: "Exonerees spent an average of 15 years of their lives behind bars prior to their release, with a maximum of 48 years taken from Glynn Simmons who was falsely convicted of a 1975 murder.",
-			alignment: "left"
-		},
-		{
-			title: "Racial Disparities",
-			description: "Most exonerees (55%) are Black.",
-			alignment: "left"
-		},
-		{
-			title: "Gender Distribution",
-			description: "Exonerees are overwhelmingly (94%) male.",
-			alignment: "center"
-		}
-	];
+	let previousNumber = 0; // Track previous section for transitions
 
 	// ===================================================================
 	// EVENT HANDLERS
@@ -49,13 +28,57 @@
 	
 	// Handle marker changes (when user scrolls to a new section)
 	const onMarker = (marker) => {
+		previousNumber = number;
 		number = marker.number;
+		
+		// Apply transition effect when moving between specific sections
+		if (previousNumber === 4 && number === 5) {
+			// When transitioning from racial to gender distribution
+			applyChartTransition();
+		} else if (previousNumber === 5 && number === 4) {
+			// When transitioning from gender to racial distribution
+			applyChartTransition();
+		}
 	};
 
 	// Track scrolling progress for animations
 	const onProgress = (progress) => {
 		stProgress = progress;
+		
+		// Apply subtle animations based on scroll progress
+		if (progress && number > 0) {
+			// Use onMount to ensure DOM elements are available
+			onMount(() => {
+				const activeSection = document.querySelector(`.chart-container > div:nth-child(${number * 2 - 1})`);
+				if (activeSection) {
+					// Apply subtle parallax or opacity changes based on scroll position
+					const opacityValue = Math.min(1, Math.max(0.3, 1 - Math.abs(progress.p - 0.5) * 0.5));
+					activeSection.style.opacity = opacityValue;
+				}
+			});
+		}
 	};
+	
+	// Function to apply smooth transitions between charts
+	function applyChartTransition() {
+		onMount(() => {
+			// Get all chart containers
+			const chartContainers = document.querySelectorAll('.chart-container > div');
+			
+			// Apply fade out to all containers
+			chartContainers.forEach(container => {
+				container.style.opacity = 0;
+			});
+			
+			// After short delay, fade in the active container
+			setTimeout(() => {
+				const activeContainer = document.querySelector(`.chart-container > div:nth-child(${number * 2 - 1})`);
+				if (activeContainer) {
+					activeContainer.style.opacity = 1;
+				}
+			}, 300);
+		});
+	}
 </script>
 
 <svelte:head>
@@ -147,36 +170,24 @@
 		<div class="chart-container">
 			<!-- Render different content based on current section -->
 			{#if number === 1}
-				<!-- Section 1: Visualization explanation -->
-				<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background-color: #f8f8f8;">
-					<div class="chart-annotation-container">
-						<div class="chart-annotation">
-							<h3>Years Lost to Wrongful Conviction</h3>
-							<p>Exonerees spent an average of 15 years of their lives behind bars prior to their release, with a maximum of 48 years taken from Glynn Simmons who was falsely convicted of a 1975 murder.</p>
-						</div>
-					</div>
+				<!-- Section 1: NEW CHART - replaced text box with column chart -->
+				<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;" class="chart-section">
+					<iframe title="The Sentences of Exonerees when Convicted" aria-label="Column Chart" id="datawrapper-chart-P7HB7" src="https://datawrapper.dwcdn.net/P7HB7/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 90% !important; border: none;" height="400" data-external="1"></iframe>
+					<script type="text/javascript">
+						!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+					</script>
 				</div>
 			
 			{:else if number === 4}
-				<!-- Section 4: Race distribution -->
-				<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+				<!-- Section 4: Race distribution with transition class -->
+				<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;" class="chart-section race-chart">
 					<iframe title="Breakdown of races " aria-label="Donut Chart" id="datawrapper-chart-40U0g" src="https://datawrapper.dwcdn.net/40U0g/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 90% !important; border: none;" height="567" data-external="1"></iframe>
-				</div>
-				
-				<div class="chart-info align-left">
-					<h3 class="chart-title">Racial Disparities</h3>
-					<p class="chart-description">This chart represents the distribution of races of exonerees.</p>
 				</div>
 			
 			{:else if number === 5}
-				<!-- Section 5: Gender distribution -->
-				<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+				<!-- Section 5: Gender distribution with transition class -->
+				<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;" class="chart-section gender-chart">
 					<iframe title="Breakdown of Sex" aria-label="Donut Chart" id="datawrapper-chart-lTcTg" src="https://datawrapper.dwcdn.net/lTcTg/3/" scrolling="no" frameborder="0" style="width: 0; min-width: 90% !important; border: none;" height="567" data-external="1"></iframe>
-				</div>
-				
-				<div class="chart-info align-center">
-					<h3 class="chart-title">Gender Distribution</h3>
-					<p class="chart-description">Exonerees are overwhelmingly (94%) male.</p>
 				</div>
 			
 			{:else}

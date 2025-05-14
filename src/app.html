@@ -120,8 +120,7 @@
 
 		<div data-mount="true" id="markNUMBER1ALIGNright"></div>
 		<p>
-			"Hey if you're right, you're right, if you're wrong, you're wrong," 
-			Benson said. "But it doesn't work out like that sometimes," 
+			Among the exonerees that received a term of years sentence (43%), sentences ranged from 1 to 95 years. 
 		</p>
 
 		<div data-mount="true" id="markNUMBER4ALIGNright"></div>
@@ -218,13 +217,13 @@
                     });
                 });
                 
-                // Improve scroll performance
+                // Improve scroll performance with debouncing
                 let lastKnownScrollPosition = 0;
                 let ticking = false;
                 
                 function doSomethingOnScroll(scrollPos) {
                     // Throttled scroll handling
-                    // This empty function helps improve scroll performance
+                    // This function helps improve scroll performance
                 }
                 
                 window.addEventListener('scroll', function(e) {
@@ -239,6 +238,44 @@
                         ticking = true;
                     }
                 });
+                
+                // Enhance transitions between the race and gender chart sections
+                const enhanceChartTransitions = function() {
+                    // Monitor visibility of chart sections using Intersection Observer
+                    const chartSections = document.querySelectorAll('.chart-section');
+                    
+                    if (chartSections.length > 0 && 'IntersectionObserver' in window) {
+                        const chartObserver = new IntersectionObserver((entries) => {
+                            entries.forEach(entry => {
+                                if (entry.isIntersecting) {
+                                    // Add extra animation class when chart becomes visible
+                                    entry.target.classList.add('chart-visible');
+                                    
+                                    // Apply special transition for race/gender charts
+                                    if (entry.target.classList.contains('race-chart') || 
+                                        entry.target.classList.contains('gender-chart')) {
+                                        entry.target.style.opacity = '0';
+                                        setTimeout(() => {
+                                            entry.target.style.opacity = '1';
+                                        }, 300);
+                                    }
+                                    
+                                    // Let the transition finish before unobserving
+                                    setTimeout(() => {
+                                        chartObserver.unobserve(entry.target);
+                                    }, 1000);
+                                }
+                            });
+                        }, { threshold: 0.3 });
+                        
+                        chartSections.forEach(section => {
+                            chartObserver.observe(section);
+                        });
+                    }
+                };
+                
+                // Initialize chart transitions after a short delay to ensure DOM is ready
+                setTimeout(enhanceChartTransitions, 500);
 			});
 		</script>
 	</body>
