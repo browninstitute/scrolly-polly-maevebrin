@@ -1,491 +1,534 @@
+
 // ===================================================================
 // GLOBAL RESET & BOX MODEL
 // Set standard box-sizing and global resets for consistent styling
 // ===================================================================
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+ box-sizing: border-box;
+ margin: 0;
+ padding: 0;
 }
+
 
 :global(html), :global(body) {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  width: 100%;
-  scroll-behavior: smooth; /* Enable smooth scrolling for all page navigation */
+ margin: 0;
+ padding: 0;
+ overflow-x: hidden; /* Prevent horizontal scrolling */
+ width: 100%;
+ scroll-behavior: smooth; /* Enable smooth scrolling for all page navigation */
 }
 
+
 :global(body) {
-  font-family: 'Figtree', sans-serif;
-  position: relative;
-  line-height: 1.6;
-  color: #333;
-  background-color: #fefefe;
+ font-family: 'Figtree', sans-serif;
+ position: relative;
+ line-height: 1.6;
+ color: #333;
+ background-color: #fefefe;
 }
+
 
 // ===================================================================
 // TYPOGRAPHY
 // Global typography settings for headings and base text
 // ===================================================================
 :global(h1), :global(h2), :global(h3), :global(h4), :global(h5), :global(h6) {
-  font-family: 'Instrument Serif', serif;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+ font-family: 'Instrument Serif', serif;
+ margin-bottom: 1rem;
+ line-height: 1.2;
 }
+
 
 :global(p) {
-  margin-bottom: 1.2rem;
+ margin-bottom: 1.2rem;
 }
 
+
 :global(a) {
-  color: #3498db;
-  text-decoration: none;
-  transition: color 0.2s ease;
-  
+ color: #3498db;
+ text-decoration: none;
+ transition: color 0.2s ease;
   &:hover {
-    color: #2980b9;
-    text-decoration: underline;
-  }
+   color: #2980b9;
+   text-decoration: underline;
+ }
 }
+
 
 // ===================================================================
 // ANIMATIONS
 // Reusable animation keyframes and classes
 // ===================================================================
 @keyframes fadeIn {
-  from { 
-    opacity: 0; 
-    transform: translateY(10px);
-  }
-  to { 
-    opacity: 1;
-    transform: translateY(0);
-  }
+ from {
+   opacity: 0;
+   transform: translateY(10px);
+ }
+ to {
+   opacity: 1;
+   transform: translateY(0);
+ }
 }
+
 
 @keyframes slideInUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+ from {
+   transform: translateY(30px);
+   opacity: 0;
+ }
+ to {
+   transform: translateY(0);
+   opacity: 1;
+ }
 }
+
 
 .animate-on-scroll {
-  opacity: 0;
-  transition: opacity 0.8s ease, transform 0.8s ease;
+ opacity: 0;
+ transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+
 .animate-visible {
-  opacity: 1;
-  transform: translateY(0);
+ opacity: 1;
+ transform: translateY(0);
 }
+
 
 // ===================================================================
 // TRANSITIONS AND ANIMATIONS
 // Enhanced transitions for smoother scrollytelling experience
 // ===================================================================
 .chart-container iframe {
-  opacity: 0;
-  animation: fadeIn 0.8s ease forwards;
-  transition: opacity 0.5s ease-in-out;
+ opacity: 0;
+ animation: fadeIn 0.8s ease forwards;
+ transition: opacity 0.5s ease-in-out;
 }
+
 
 // Transition between chart sections
 .chart-section {
-  transition: opacity 0.8s ease-in-out;
+ transition: opacity 0.8s ease-in-out;
 }
+
 
 // Special transitions for the race and gender charts
 .race-chart, .gender-chart {
-  opacity: 1;
-  transition: all 0.8s ease-in-out;
+ opacity: 1;
+ transition: all 0.8s ease-in-out;
 }
 
+
 // ===================================================================
-// GRAPHIC CONTAINER 
+// GRAPHIC CONTAINER
 // Main container for visualizations in scrollytelling sections
 // ===================================================================
 .graphic {
-  background-color: #f9f9f9;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  position: relative;
+ background-color: #f9f9f9;
+ height: 100%;
+ width: 100%;
+ display: flex;
+ position: relative;
 }
 
+
 .number {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: 900;
-  font-size: 2rem;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ font-weight: 900;
+ font-size: 2rem;
 }
+
 
 // ===================================================================
 // CHART CONTAINER AND INFO
 // Styling for chart visualizations and explanatory text
 // ===================================================================
 .chart-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
+ width: 100%;
+ height: 100%;
+ position: relative;
+ display: flex;
+ flex-direction: column;
 }
+
 
 // ===================================================================
 // FULLSCREEN LAYOUTS
 // Full viewport height sections for chapter transitions
 // ===================================================================
 .fullscreen-chapter {
-  height: 100vh;
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  left: 0;
-  right: 0;
-  top: 0;
+ height: 100vh;
+ width: 100%;
+ max-width: 100%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin: 0;
+ padding: 0;
+ position: relative;
+ left: 0;
+ right: 0;
+ top: 0;
 }
 
+
 .black-bg {
-  background-color: #000;
-  color: #fff;
+ background-color: #000;
+ color: #fff;
 }
+
 
 // ===================================================================
 // INITIAL STATE
 // Styling for the initial view before scrolling begins
 // ===================================================================
 .initial-state {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  background-color: #f9f9f9;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100%;
+ width: 100%;
+ background-color: #f9f9f9;
 }
 
+
 .initial-state p {
-  font-family: 'Instrument Serif', serif;
-  font-size: 2rem;
-  color: #333;
-  text-align: center;
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 0.5rem;
-  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+ font-family: 'Instrument Serif', serif;
+ font-size: 2rem;
+ color: #333;
+ text-align: center;
+ padding: 2rem;
+ background-color: rgba(255, 255, 255, 0.7);
+ border-radius: 0.5rem;
+ box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
 }
+
 
 // ===================================================================
 // HEADER SECTION
 // Hero section with background image and title overlay
 // ===================================================================
 .header-image {
-  background-image: url('../src/TestExample/Images/prison.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+ background-image: url('../src/TestExample/Images/prison.png');
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ position: relative;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
+
 
 .header-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1;
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background-color: rgba(0, 0, 0, 0.6);
+ z-index: 1;
 }
+
 
 .header-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: #fff;
-  max-width: 80%;
+ position: relative;
+ z-index: 2;
+ text-align: center;
+ color: #fff;
+ max-width: 80%;
 }
+
 
 .main-title {
-  font-family: 'Instrument Serif', serif !important;
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
-  line-height: 1.2;
+ font-family: 'Instrument Serif', serif !important;
+ font-size: 3.5rem;
+ margin-bottom: 1rem;
+ text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+ line-height: 1.2;
 }
 
+
 .sub-title {
-  font-family: 'Fira Sans', sans-serif !important;
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-top: 0;
-  text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+ font-family: 'Fira Sans', sans-serif !important;
+ font-size: 1.5rem;
+ font-weight: 400;
+ margin-top: 0;
+ text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
 }
+
 
 // ===================================================================
 // CONTENT CONTAINERS
 // Standard content container for consistent layout
 // ===================================================================
 .content-container {
-  width: 80%;
-  max-width: 50rem;
-  margin: 3.75rem auto;
-  padding: 0 1.25rem;
+ width: 80%;
+ max-width: 50rem;
+ margin: 3.75rem auto;
+ padding: 0 1.25rem;
 }
+
 
 .fullscreen-chapter .content-container {
-  margin: 0 auto;
+ margin: 0 auto;
 }
 
+
 .content-paragraph {
-  font-family: 'Figtree', sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin: 0 0 1.25rem 0;
+ font-family: 'Figtree', sans-serif;
+ font-size: 1.1rem;
+ line-height: 1.6;
+ margin: 0 0 1.25rem 0;
 }
+
 
 // ===================================================================
 // IMAGE LAYOUT
 // Floated image with text wrapping
 // ===================================================================
 .image-left {
-  float: left;
-  width: 50%;
-  margin: 0 1.25rem 1.25rem 0;
+ float: left;
+ width: 50%;
+ margin: 0 1.25rem 1.25rem 0;
 }
+
 
 .image-left img {
-  width: 100%;
-  height: auto;
-  display: block;
+ width: 100%;
+ height: auto;
+ display: block;
 }
 
+
 .content-container::after {
-  content: "";
-  display: table;
-  clear: both;
+ content: "";
+ display: table;
+ clear: both;
 }
+
 
 // ===================================================================
 // FOOTER STYLING
 // Site footer with distinctive monospace font
 // ===================================================================
 .site-footer {
-  background-color: #000;
-  color: #fff;
-  padding: 3.75rem 0;
-  width: 100%;
-  font-family: 'Space Mono', monospace;
+ background-color: #000;
+ color: #fff;
+ padding: 3.75rem 0;
+ width: 100%;
+ font-family: 'Space Mono', monospace;
 }
+
 
 .footer-container {
-  width: 80%;
-  max-width: 50rem;
-  margin: 0 auto;
-  padding: 0 1.25rem;
+ width: 80%;
+ max-width: 50rem;
+ margin: 0 auto;
+ padding: 0 1.25rem;
 }
+
 
 .footer-content {
-  margin-bottom: 1.875rem;
+ margin-bottom: 1.875rem;
 }
+
 
 .footer-heading {
-  font-family: 'Space Mono', monospace;
-  font-size: 1.5rem;
-  margin-bottom: 1.25rem;
-  font-weight: 700;
+ font-family: 'Space Mono', monospace;
+ font-size: 1.5rem;
+ margin-bottom: 1.25rem;
+ font-weight: 700;
 }
+
 
 .footer-text {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 0.625rem;
-  font-weight: 400;
+ font-size: 0.9rem;
+ line-height: 1.6;
+ margin-bottom: 0.625rem;
+ font-weight: 400;
 }
+
 
 .footer-links {
-  border-top: 0.0625rem solid #333;
-  padding-top: 1.25rem;
+ border-top: 0.0625rem solid #333;
+ padding-top: 1.25rem;
 }
+
 
 .footer-links a {
-  color: #fff;
-  text-decoration: none;
+ color: #fff;
+ text-decoration: none;
 }
 
+
 .footer-links a:hover {
-  text-decoration: underline;
+ text-decoration: underline;
 }
+
 
 // ===================================================================
 // SCROLLYTELLER COMPONENTS
 // Core structure for the scrollytelling experience
 // ===================================================================
 .scrollyteller {
-  position: relative;
-  scroll-behavior: smooth;
+ position: relative;
+ scroll-behavior: smooth;
 }
+
 
 // Fixed graphic container
 .graphic {
-  transform: translate3d(0, 0, 0); // Force GPU acceleration
-  height: 100vh;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 1;
+ transform: translate3d(0, 0, 0); // Force GPU acceleration
+ height: 100vh;
+ width: 100%;
+ position: sticky;
+ top: 0;
+ left: 0;
+ z-index: 1;
 }
+
 
 // Scrollable content container
 .content {
-  margin-top: -100vh; // Overlap with graphic
-  position: relative;
-  z-index: 2;
-  overflow: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  pointer-events: none;
+ margin-top: -100vh; // Overlap with graphic
+ position: relative;
+ z-index: 2;
+ overflow: hidden;
+ min-height: 100vh;
+ display: flex;
+ flex-direction: column;
+ pointer-events: none;
 }
+
 
 // ===================================================================
 // DATA VISUALIZATION ENHANCEMENTS
 // Specific styling for data charts and interactive elements
 // ===================================================================
 .chart-annotation-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  width: 100%;
-  max-width: 800px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 2rem;
+ width: 100%;
+ max-width: 800px;
 }
+
 
 .chart-annotation {
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  max-width: 600px;
-  text-align: center;
+ background-color: rgba(255, 255, 255, 0.95);
+ padding: 2rem;
+ border-radius: 8px;
+ box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+ max-width: 600px;
+ text-align: center;
 }
+
 
 .chart-annotation h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #333;
+ font-size: 1.8rem;
+ margin-bottom: 1rem;
+ color: #333;
 }
+
 
 .chart-annotation p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: #555;
+ font-size: 1.2rem;
+ line-height: 1.6;
+ color: #555;
 }
+
 
 .spacer {
-  height: 100px;
-  width: 100%;
-  clear: both;
+ height: 100px;
+ width: 100%;
+ clear: both;
 }
 
+
 .conclusion-section {
-  margin-top: 150px;
-  padding-top: 50px;
-  position: relative;
-  z-index: 5;
-  background-color: #fff;
+ margin-top: 150px;
+ padding-top: 50px;
+ position: relative;
+ z-index: 5;
+ background-color: #fff;
 }
+
 
 // ===================================================================
 // RESPONSIVE BREAKPOINTS
 // Media queries for responsive design at different screen sizes
 // ===================================================================
 @media (max-width: 75rem) { // 1200px
-  .main-title {
-    font-size: 2.8rem;
-  }
-  
+ .main-title {
+   font-size: 2.8rem;
+ }
   .sub-title {
-    font-size: 1.3rem;
-  }
+   font-size: 1.3rem;
+ }
 }
+
 
 @media (max-width: 64rem) { // 1024px
-  :global(.right) {
-    margin-right: calc(27.5% - 24.75rem) !important;
-    width: 49.5rem !important;
-  }
+ :global(.right) {
+   margin-right: calc(27.5% - 24.75rem) !important;
+   width: 49.5rem !important;
+ }
 
-  :global(.left) {
-    margin-left: calc(22.5% - 24.75rem) !important;
-    width: 49.5rem !important;
-  }
-  
+
+ :global(.left) {
+   margin-left: calc(22.5% - 24.75rem) !important;
+   width: 49.5rem !important;
+ }
   .main-title {
-    font-size: 2.5rem;
-  }
+   font-size: 2.5rem;
+ }
 }
+
 
 @media (max-width: 48rem) { // 768px
-  .main-title {
-    font-size: 2rem;
-    padding: 0 15px;
-  }
-  
+ .main-title {
+   font-size: 2rem;
+   padding: 0 15px;
+ }
   .sub-title {
-    font-size: 1.1rem;
-  }
-  
+   font-size: 1.1rem;
+ }
   .footer-heading {
-    font-size: 1.2rem;
-  }
-  
+   font-size: 1.2rem;
+ }
   .footer-text {
-    font-size: 0.8rem;
-  }
-  
+   font-size: 0.8rem;
+ }
   .chart-container {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    justify-content: center !important;
-  }
-  
+   padding-left: 0 !important;
+   padding-right: 0 !important;
+   justify-content: center !important;
+ }
   .content-container {
-    width: 90%;
-  }
-  
+   width: 90%;
+ }
   .image-left {
-    width: 100%;
-    float: none;
-    margin: 0 0 1.25rem 0;
-  }
+   width: 100%;
+   float: none;
+   margin: 0 0 1.25rem 0;
+ }
 }
 
+
 @media (max-width: 30rem) { // 480px
-  .main-title {
-    font-size: 1.8rem;
-  }
-  
+ .main-title {
+   font-size: 1.8rem;
+ }
   .sub-title {
-    font-size: 1rem;
-  }
-  
+   font-size: 1rem;
+ }
   .content-paragraph {
-    font-size: 1rem;
-  }
+   font-size: 1rem;
+ }
 }
+

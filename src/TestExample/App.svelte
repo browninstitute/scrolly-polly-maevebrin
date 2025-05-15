@@ -144,15 +144,15 @@
 // Visualization of years lost to wrongful conviction
 // ===================================================================
 -->
-<div style="min-height:730px; margin: 50px 0"><iframe title="Years free v. years lost among people wrongfully convicted of murder" aria-label="Stacked Bars" id="datawrapper-chart-PvGQT" src="https://datawrapper.dwcdn.net/PvGQT/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="33910" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
+<div style="min-height:400px; margin: 50px 0"><iframe title="Age when convicted v. years lost" aria-label="Stacked Bars" id="datawrapper-chart-cDXnW" src="https://datawrapper.dwcdn.net/cDXnW/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="400" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script></div>
 
 <div class="content-container">
-	<p class="content-paragraph">The chart above represents the years lost among those wrongfully convicted of murder. Age of the exoneree when they were released is the number on the far right side of each bar.</p>
-	<p class="content-paragraph">Prisoners from 46 U.S. states, the District of Columbia, and Puerto Rico have been exonerated since 1989.</p>
+	<p class="content-paragraph">The chart above represents the years lost among those wrongfully convicted of murder. Age of the exoneree when they were released is the number on the far right side of each bar. Exonerees spent an average of 15 years of their lives behind bars prior to their release, with a maximum of 48 years taken from Glynn Simmons who was falsely convicted of a 1975 murder.</p>
 	<div style="min-height:510px; margin: 30px 0"><iframe title="Number of Exonerations per State" aria-label="Map" id="datawrapper-chart-BFkx7" src="https://datawrapper.dwcdn.net/BFkx7/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="510" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",(function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}}))}();
 </script></div>
-	<p class="content-paragraph">Wrongful convictions occur across the country, but the highest numbers are found in states with larger populations and more extensive criminal justice systems. These cases reveal systemic issues that transcend regional boundaries.</p>
+<p class="content-paragraph">Prisoners from 46 U.S. states, the District of Columbia, and Puerto Rico have been exonerated since 1989.</p>
+
 </div>
 
 <!-- 

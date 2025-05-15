@@ -1,282 +1,285 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="description" content="U.S. Exonerations: Lifetimes lost among those wrongfully convicted of murder" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		
-		<!-- 
-		// ===================================================================
-		// FONT IMPORTS
-		// Import Google Fonts for typography throughout the application
-		// ===================================================================
-		-->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fleur+De+Leah&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-		%sveltekit.head%
-		
-		<!-- 
-		// ===================================================================
-		// LOADING STATES
-		// Styling to prevent Flash of Unstyled Content (FOUC) during load
-		// ===================================================================
-		-->
-		<style>
-			/* Initially hide content that will be replaced by Svelte */
-			[data-mount="true"] {
-				display: none;
-			}
-			
-			/* Initial page loading overlay */
-			.app-loading {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background-color: #000000;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				z-index: 9999;
-				transition: opacity 0.5s ease-out;
-			}
-			
-			.app-loading.hide {
-				opacity: 0;
-				pointer-events: none;
-			}
-			
-			.loading-spinner {
-				width: 50px;
-				height: 50px;
-				border: 5px solid #f3f3f3;
-				border-top: 5px solid #3498db;
-				border-radius: 50%;
-				animation: spin 1s linear infinite;
-			}
-			
-			@keyframes spin {
-				0% { transform: rotate(0deg); }
-				100% { transform: rotate(360deg); }
-			}
-			
-			/* Hide all paragraphs until app is ready */
-			body > p {
-				display: none;
-			}
-            
-            /* Smooth scrolling for the entire page */
-            html {
-                scroll-behavior: smooth;
-            }
-            
-            /* Improved scrolling performance */
-            body {
-                -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
-                overflow-y: scroll;
-                scroll-behavior: smooth;
-            }
-		</style>
-		
-		<!-- Open Graph and Twitter Card metadata for social sharing -->
-		<meta property="og:title" content="U.S. Exonerations: Lifetimes lost among those wrongfully convicted of murder">
-		<meta property="og:description" content="An interactive data visualization on wrongful convictions and their impact">
-		<meta property="og:type" content="website">
-		<meta property="og:image" content="/images/og-preview.jpg">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="U.S. Exonerations: Lifetimes lost among those wrongfully convicted of murder">
-		<meta name="twitter:description" content="An interactive data visualization on wrongful convictions and their impact">
-		<meta name="twitter:image" content="/images/twitter-preview.jpg">
-	</head>
-	<body>
-		<!-- 
-		// ===================================================================
-		// LOADING OVERLAY
-		// Initial loading state before content is rendered
-		// ===================================================================
-		-->
-		<div class="app-loading" id="appLoading">
-			<div class="loading-spinner"></div>
-		</div>
-		
-		<!-- 
-		// ===================================================================
-		// SVELTE APP MOUNT POINT
-		// Main container where SvelteKit mounts the application
-		// ===================================================================
-		-->
-		<div id="svelteApp">%sveltekit.body%</div>
-		
-		<!-- 
-		// ===================================================================
-		// SCROLLYTELLER MOUNT POINTS
-		// Anchors and markers for scrollytelling functionality
-		// ===================================================================
-		-->
-		<div data-mount="true" id="scrollytellerNAMEtest" data-component="Anchor"></div>
+   <head>
+       <meta charset="utf-8" />
+       <meta name="description" content="U.S. Exonerations: Lifetimes lost among those wrongfully convicted of murder" />
+       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      
+       <!--
+       // ===================================================================
+       // FONT IMPORTS
+       // Import Google Fonts for typography throughout the application
+       // ===================================================================
+       -->
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fleur+De+Leah&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+       %sveltekit.head%
+      
+       <!--
+       // ===================================================================
+       // LOADING STATES
+       // Styling to prevent Flash of Unstyled Content (FOUC) during load
+       // ===================================================================
+       -->
+       <style>
+           /* Initially hide content that will be replaced by Svelte */
+           [data-mount="true"] {
+               display: none;
+           }
+          
+           /* Initial page loading overlay */
+           .app-loading {
+               position: fixed;
+               top: 0;
+               left: 0;
+               width: 100%;
+               height: 100%;
+               background-color: #000000;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               z-index: 9999;
+               transition: opacity 0.5s ease-out;
+           }
+          
+           .app-loading.hide {
+               opacity: 0;
+               pointer-events: none;
+           }
+          
+           .loading-spinner {
+               width: 50px;
+               height: 50px;
+               border: 5px solid #f3f3f3;
+               border-top: 5px solid #3498db;
+               border-radius: 50%;
+               animation: spin 1s linear infinite;
+           }
+          
+           @keyframes spin {
+               0% { transform: rotate(0deg); }
+               100% { transform: rotate(360deg); }
+           }
+          
+           /* Hide all paragraphs until app is ready */
+           body > p {
+               display: none;
+           }
+          
+           /* Smooth scrolling for the entire page */
+           html {
+               scroll-behavior: smooth;
+           }
+          
+           /* Improved scrolling performance */
+           body {
+               -webkit-font-smoothing: antialiased;
+               -moz-osx-font-smoothing: grayscale;
+               overflow-y: scroll;
+               scroll-behavior: smooth;
+           }
+       </style>
+      
+       <!-- Open Graph and Twitter Card metadata for social sharing -->
+       <meta property="og:title" content="U.S. Exonerations: Lifetimes lost among those wrongfully convicted of murder">
+       <meta property="og:description" content="An interactive data visualization on wrongful convictions and their impact">
+       <meta property="og:type" content="website">
+       <meta property="og:image" content="/images/og-preview.jpg">
+       <meta name="twitter:card" content="summary_large_image">
+       <meta name="twitter:title" content="U.S. Exonerations: Lifetimes lost among those wrongfully convicted of murder">
+       <meta name="twitter:description" content="An interactive data visualization on wrongful convictions and their impact">
+       <meta name="twitter:image" content="/images/twitter-preview.jpg">
+   </head>
+   <body>
+       <!--
+       // ===================================================================
+       // LOADING OVERLAY
+       // Initial loading state before content is rendered
+       // ===================================================================
+       -->
+       <div class="app-loading" id="appLoading">
+           <div class="loading-spinner"></div>
+       </div>
+      
+       <!--
+       // ===================================================================
+       // SVELTE APP MOUNT POINT
+       // Main container where SvelteKit mounts the application
+       // ===================================================================
+       -->
+       <div id="svelteApp">%sveltekit.body%</div>
+      
+       <!--
+       // ===================================================================
+       // SCROLLYTELLER MOUNT POINTS
+       // Anchors and markers for scrollytelling functionality
+       // ===================================================================
+       -->
+       <div data-mount="true" id="scrollytellerNAMEtest" data-component="Anchor"></div>
 
-		<div data-mount="true" id="markNUMBER1ALIGNright"></div>
-		<p>
-			Among the exonerees that received a term of years sentence (43%), sentences ranged from 1 to 95 years. 
-		</p>
 
-		<div data-mount="true" id="markNUMBER4ALIGNright"></div>
-		<p>
-			Most exonerees (55%) are Black. Black Americans 
-		</p>
-		<p>
-			are incarcerated at a disproportionate rate as approximately 48% of the people serving 
-		</p>
-		<p>
-			life sentences, and 37% of people in jails and prison are Black despite accounting for 
-			 only 13% of the total U.S. population.
-		</p>
+       <div data-mount="true" id="markNUMBER1ALIGNright"></div>
+       <p>
+           Among the exonerees that received a term of years sentence (43%), sentences ranged from 1 to 95 years.
+       </p>
 
-		<div data-mount="true" id="markNUMBER5ALIGN"></div>
-		<p>
-			The overwhelming majority of exonerees are male, reflecting both the demographics of the prison 
-			population as a whole and potentially different approaches to investigating and prosecuting cases 
-			based on gender.
-		</p>
 
-		<div data-mount="true" id="endscrollyteller"></div>
-		
-		<!-- 
-		// ===================================================================
-		// LOADING SCREEN REMOVAL
-		// Script to hide loading overlay once content is loaded
-		// ===================================================================
-		-->
-		<script>
-			// Remove loading screen once the app is mounted
-			document.addEventListener('DOMContentLoaded', function() {
-				// Short timeout to ensure Svelte has had time to initialize
-				setTimeout(function() {
-					var loadingScreen = document.getElementById('appLoading');
-					if (loadingScreen) {
-						loadingScreen.classList.add('hide');
-						// Remove from DOM after transition completes
-						setTimeout(function() {
-							loadingScreen.parentNode.removeChild(loadingScreen);
-						}, 500);
-					}
-				}, 200);
-			});
-			
-			// Add smooth scrolling for anchor links
-			document.addEventListener('click', function(e) {
-				if (e.target.tagName === 'A' && e.target.getAttribute('href') && e.target.getAttribute('href').startsWith('#')) {
-					e.preventDefault();
-					const targetId = e.target.getAttribute('href').substring(1);
-					const targetElement = document.getElementById(targetId);
-					
-					if (targetElement) {
-						window.scrollTo({
-							top: targetElement.offsetTop,
-							behavior: 'smooth'
-						});
-					}
-				}
-			});
-			
-			// Add intersection observer for animation triggers
-			document.addEventListener('DOMContentLoaded', function() {
-				const animateElements = document.querySelectorAll('.animate-on-scroll');
-				
-				if (animateElements.length > 0 && 'IntersectionObserver' in window) {
-					const observer = new IntersectionObserver((entries) => {
-						entries.forEach(entry => {
-							if (entry.isIntersecting) {
-								entry.target.classList.add('animate-visible');
-								observer.unobserve(entry.target);
-							}
-						});
-					}, { threshold: 0.2 });
-					
-					animateElements.forEach(element => {
-						observer.observe(element);
-					});
-				}
-                
-                // Make scrolling smoother
-                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                    anchor.addEventListener('click', function (e) {
-                        e.preventDefault();
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-                        
-                        if (targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop,
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
-                });
-                
-                // Improve scroll performance with debouncing
-                let lastKnownScrollPosition = 0;
-                let ticking = false;
-                
-                function doSomethingOnScroll(scrollPos) {
-                    // Throttled scroll handling
-                    // This function helps improve scroll performance
-                }
-                
-                window.addEventListener('scroll', function(e) {
-                    lastKnownScrollPosition = window.scrollY;
-                    
-                    if (!ticking) {
-                        window.requestAnimationFrame(function() {
-                            doSomethingOnScroll(lastKnownScrollPosition);
-                            ticking = false;
-                        });
-                        
-                        ticking = true;
-                    }
-                });
-                
-                // Enhance transitions between the race and gender chart sections
-                const enhanceChartTransitions = function() {
-                    // Monitor visibility of chart sections using Intersection Observer
-                    const chartSections = document.querySelectorAll('.chart-section');
-                    
-                    if (chartSections.length > 0 && 'IntersectionObserver' in window) {
-                        const chartObserver = new IntersectionObserver((entries) => {
-                            entries.forEach(entry => {
-                                if (entry.isIntersecting) {
-                                    // Add extra animation class when chart becomes visible
-                                    entry.target.classList.add('chart-visible');
-                                    
-                                    // Apply special transition for race/gender charts
-                                    if (entry.target.classList.contains('race-chart') || 
-                                        entry.target.classList.contains('gender-chart')) {
-                                        entry.target.style.opacity = '0';
-                                        setTimeout(() => {
-                                            entry.target.style.opacity = '1';
-                                        }, 300);
-                                    }
-                                    
-                                    // Let the transition finish before unobserving
-                                    setTimeout(() => {
-                                        chartObserver.unobserve(entry.target);
-                                    }, 1000);
-                                }
-                            });
-                        }, { threshold: 0.3 });
-                        
-                        chartSections.forEach(section => {
-                            chartObserver.observe(section);
-                        });
-                    }
-                };
-                
-                // Initialize chart transitions after a short delay to ensure DOM is ready
-                setTimeout(enhanceChartTransitions, 500);
-			});
-		</script>
-	</body>
+       <div data-mount="true" id="markNUMBER4ALIGNright"></div>
+       <p>
+           Most exonerees (55%) are Black. Black Americans
+       </p>
+       <p>
+           are incarcerated at a disproportionate rate as approximately 48% of the people serving
+       </p>
+       <p>
+           life sentences, and 37% of people in jails and prison are Black despite accounting for
+            only 13% of the total U.S. population.
+       </p>
+
+
+       <div data-mount="true" id="markNUMBER5ALIGN"></div>
+       <p>
+         Exonerees are overwhelmingly (94%) male. According to the Federal Bureau of Prisons, approximately 93.5% of inmates are male.
+       </p>
+
+
+       <div data-mount="true" id="endscrollyteller"></div>
+      
+       <!--
+       // ===================================================================
+       // LOADING SCREEN REMOVAL
+       // Script to hide loading overlay once content is loaded
+       // ===================================================================
+       -->
+       <script>
+           // Remove loading screen once the app is mounted
+           document.addEventListener('DOMContentLoaded', function() {
+               // Short timeout to ensure Svelte has had time to initialize
+               setTimeout(function() {
+                   var loadingScreen = document.getElementById('appLoading');
+                   if (loadingScreen) {
+                       loadingScreen.classList.add('hide');
+                       // Remove from DOM after transition completes
+                       setTimeout(function() {
+                           loadingScreen.parentNode.removeChild(loadingScreen);
+                       }, 500);
+                   }
+               }, 200);
+           });
+          
+           // Add smooth scrolling for anchor links
+           document.addEventListener('click', function(e) {
+               if (e.target.tagName === 'A' && e.target.getAttribute('href') && e.target.getAttribute('href').startsWith('#')) {
+                   e.preventDefault();
+                   const targetId = e.target.getAttribute('href').substring(1);
+                   const targetElement = document.getElementById(targetId);
+                  
+                   if (targetElement) {
+                       window.scrollTo({
+                           top: targetElement.offsetTop,
+                           behavior: 'smooth'
+                       });
+                   }
+               }
+           });
+          
+           // Add intersection observer for animation triggers
+           document.addEventListener('DOMContentLoaded', function() {
+               const animateElements = document.querySelectorAll('.animate-on-scroll');
+              
+               if (animateElements.length > 0 && 'IntersectionObserver' in window) {
+                   const observer = new IntersectionObserver((entries) => {
+                       entries.forEach(entry => {
+                           if (entry.isIntersecting) {
+                               entry.target.classList.add('animate-visible');
+                               observer.unobserve(entry.target);
+                           }
+                       });
+                   }, { threshold: 0.2 });
+                  
+                   animateElements.forEach(element => {
+                       observer.observe(element);
+                   });
+               }
+              
+               // Make scrolling smoother
+               document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                   anchor.addEventListener('click', function (e) {
+                       e.preventDefault();
+                       const targetId = this.getAttribute('href');
+                       const targetElement = document.querySelector(targetId);
+                      
+                       if (targetElement) {
+                           window.scrollTo({
+                               top: targetElement.offsetTop,
+                               behavior: 'smooth'
+                           });
+                       }
+                   });
+               });
+              
+               // Improve scroll performance with debouncing
+               let lastKnownScrollPosition = 0;
+               let ticking = false;
+              
+               function doSomethingOnScroll(scrollPos) {
+                   // Throttled scroll handling
+                   // This function helps improve scroll performance
+               }
+              
+               window.addEventListener('scroll', function(e) {
+                   lastKnownScrollPosition = window.scrollY;
+                  
+                   if (!ticking) {
+                       window.requestAnimationFrame(function() {
+                           doSomethingOnScroll(lastKnownScrollPosition);
+                           ticking = false;
+                       });
+                      
+                       ticking = true;
+                   }
+               });
+              
+               // Enhance transitions between the race and gender chart sections
+               const enhanceChartTransitions = function() {
+                   // Monitor visibility of chart sections using Intersection Observer
+                   const chartSections = document.querySelectorAll('.chart-section');
+                  
+                   if (chartSections.length > 0 && 'IntersectionObserver' in window) {
+                       const chartObserver = new IntersectionObserver((entries) => {
+                           entries.forEach(entry => {
+                               if (entry.isIntersecting) {
+                                   // Add extra animation class when chart becomes visible
+                                   entry.target.classList.add('chart-visible');
+                                  
+                                   // Apply special transition for race/gender charts
+                                   if (entry.target.classList.contains('race-chart') ||
+                                       entry.target.classList.contains('gender-chart')) {
+                                       entry.target.style.opacity = '0';
+                                       setTimeout(() => {
+                                           entry.target.style.opacity = '1';
+                                       }, 300);
+                                   }
+                                  
+                                   // Let the transition finish before unobserving
+                                   setTimeout(() => {
+                                       chartObserver.unobserve(entry.target);
+                                   }, 1000);
+                               }
+                           });
+                       }, { threshold: 0.3 });
+                      
+                       chartSections.forEach(section => {
+                           chartObserver.observe(section);
+                       });
+                   }
+               };
+              
+               // Initialize chart transitions after a short delay to ensure DOM is ready
+               setTimeout(enhanceChartTransitions, 500);
+           });
+       </script>
+   </body>
 </html>
+
